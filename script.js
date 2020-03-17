@@ -4,6 +4,7 @@ let calcBtn;
 let total;
 let display = document.getElementById("output-display");
 const getNumButtons = document.querySelectorAll(".std-btn");
+const setNumbers = document.querySelectorAll(".std-btn");
 const getOperatorButtons = document.querySelectorAll(".calc-btn");
 const clearButton = document.getElementById("clear-btn").addEventListener("click", clearEverything);
 const equalButton = document.getElementById("equalBtn").addEventListener("click", calculateTotal);
@@ -13,7 +14,7 @@ getNumButtons.forEach(function (button) {
         if(display.innerText === "" || display.innerText === calcBtn) {
             display.innerText = e.target.value;
         } else{
-            display.innerText = display.innerText + e.target.value; 
+            display.innerText = display.innerText + e.target.value;
         }
     })
 });
@@ -27,35 +28,41 @@ getOperatorButtons.forEach(function(opBtn) {
     })
 });
 
-function setNumbers() {
-    let userValue = display.innerText;
-    if(calcBtn === undefined) {
-        numb1 = parseFloat(userValue);
-    } else if (numb1 !== null && calcBtn !== undefined) {
-        numb2 = parseFloat(userValue);
-    }
-}
-
+setNumbers.forEach(function (e) {
+    e.addEventListener("click", function() {
+        let userValue = display.innerText;
+        if(calcBtn === undefined) {
+            numb1 = parseFloat(userValue);
+        } else if (numb1 !== null && calcBtn !== undefined) {
+            numb2 = parseFloat(userValue);
+        }
+    })
+}); 
+  
 function calculateTotal() {
-    switch(getOperatorButtons) {
+    switch(calcBtn) {
         case "+":
             total = numb1 + numb2;
-            display.innerText = total;
+            display.innerText = +total.toFixed(3);
+            numb1 = total;
             break;
 
         case "-":
             total = numb1 - numb2;
-            display.innerText = total;
+            display.innerText = +total.toFixed(3);
+            numb1 = total;
             break;
 
-        case "*":
+        case "x":
             total = numb1 * numb2;
-            display.innerText = total;
+            display.innerText = +total.toFixed(3);
+            numb1 = total;
             break;
 
         case "/":
             total = numb1 / numb2;
-            display.innerText = total;
+            display.innerText = +total.toFixed(3);
+            numb1 = total;
             break;
     }
 }
@@ -64,5 +71,8 @@ function calculateTotal() {
 function clearEverything(e) {
     if(e.target.className === "clear-btn") {
         document.getElementById("output-display").innerHTML = "";
+        numb1 = null;
+        numb2 = null;
+        calcBtn = undefined;
     }
 }
