@@ -4,6 +4,7 @@ let calcBtn;
 let total;
 let display = document.getElementById("output-display");
 const getNumButtons = document.querySelectorAll(".std-btn");
+const decimalButton = document.getElementById("decimal-btn");
 const setNumbers = document.querySelectorAll(".std-btn");
 const getOperatorButtons = document.querySelectorAll(".calc-btn");
 const clearButton = document.getElementById("clear-btn").addEventListener("click", clearEverything);
@@ -11,12 +12,21 @@ const equalButton = document.getElementById("equalBtn").addEventListener("click"
 
 getNumButtons.forEach(function (button) {
     button.addEventListener("click", function(e) {
-        if(display.innerText === "" || display.innerText === calcBtn) {
+        
+        if(display.innerText === "" || display.innerText === calcBtn || display.innerText === total) {
             display.innerText = e.target.value;
-        } else{
-            display.innerText = display.innerText + e.target.value;
+        } else {
+            display.innerText += e.target.value;
         }
     })
+});
+
+decimalButton.addEventListener("click", function(e) {
+    decimalButton.disabled = false;
+    let decimal = e.target.value;
+    if (decimal.innerText === ".") {
+        decimalButton.disabled = true;
+     }
 });
 
 getOperatorButtons.forEach(function(opBtn) {
@@ -65,14 +75,13 @@ function calculateTotal() {
             numb1 = total;
             break;
     }
+    return total;
 }
 
 
-function clearEverything(e) {
-    if(e.target.className === "clear-btn") {
-        document.getElementById("output-display").innerHTML = "";
-        numb1 = null;
-        numb2 = null;
-        calcBtn = undefined;
-    }
+function clearEverything() {
+    document.getElementById("output-display").innerHTML = "";
+    numb1 = null;
+    numb2 = null;
+    calcBtn = undefined;
 }
