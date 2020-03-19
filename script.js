@@ -12,21 +12,15 @@ const equalButton = document.getElementById("equalBtn").addEventListener("click"
 
 getNumButtons.forEach(function (button) {
     button.addEventListener("click", function(e) {
-        
-        if(display.innerText === "" || display.innerText === calcBtn || display.innerText === total) {
-            display.innerText = e.target.value;
-        } else {
+        if(display.innerText === "" || display.innerText === calcBtn) {
+            display.innerText = e.target.value;   
+        } else if(e.target.value === ".") {
             display.innerText += e.target.value;
+            decimalButton.value = ""; 
+        }else {
+            display.innerText += e.target.value; 
         }
     })
-});
-
-decimalButton.addEventListener("click", function(e) {
-    decimalButton.disabled = false;
-    let decimal = e.target.value;
-    if (decimal.innerText === ".") {
-        decimalButton.disabled = true;
-     }
 });
 
 getOperatorButtons.forEach(function(opBtn) {
@@ -34,6 +28,9 @@ getOperatorButtons.forEach(function(opBtn) {
         if (e.target.className === "calc-btn") {
             calcBtn = e.target.value;
             display.innerText = calcBtn;
+            if(display.innerText === calcBtn) {
+                decimalButton.value = ".";
+            }
         }
     })
 });
@@ -75,9 +72,7 @@ function calculateTotal() {
             numb1 = total;
             break;
     }
-    return total;
 }
-
 
 function clearEverything() {
     document.getElementById("output-display").innerHTML = "";
