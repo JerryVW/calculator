@@ -46,7 +46,10 @@ setNumbers.forEach(function (e) {
     })
 }); 
   
-function calculateTotal() {
+function calculateTotal(e) {
+    if(e.target.value === "=") {
+        decimalButton.value = ".";
+    }
     switch(calcBtn) {
         case "+":
             total = numb1 + numb2;
