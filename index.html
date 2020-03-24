@@ -8,39 +8,42 @@
 </head>
 <body id="calc-body">
     <div class="container">
-        <input id="output-display" class="display" type="text" minlength="1" maxlength="10" size="10">
+        <input id="output-display" value="" class="display" type="text" minlength="1" maxlength="10" size="10">
     
-        <div class="clear">
-            <button id="clear-btn" class="clear-btn" type="button">CE</button>
-            <button class="calc-btn" type="button" value="/">/</button>
+        <div id="all-keys">
+            <div class="clear">
+                <button id="clear-btn" class="clear-btn" type="button">CE</button>
+                <button class="calc-btn" type="button" value="/">/</button>
+            </div>
+    
+            <div class="row-one">
+                <button class="std-btn" type="button" value="7">7</button>
+                <button class="std-btn" type="button" value="8">8</button>
+                <button class="std-btn" type="button" value="9">9</button>
+                <button class="calc-btn" type="button" value="x">x</button>
+            </div>
+    
+            <div class="row-two">
+                <button class="std-btn" type="button" value="4">4</button>
+                <button class="std-btn" type="button" value="5">5</button>
+                <button class="std-btn" type="button" value="6">6</button>
+                <button class="calc-btn" type="button" value="-">-</button>
+            </div>
+    
+            <div class="row-three">
+                <button class="std-btn" type="button" value="1">1</button>
+                <button class="std-btn" type="button" value="2">2</button>
+                <button class="std-btn" type="button" value="3">3</button>
+                <button class="calc-btn" type="button" value="+">+</button>
+            </div>
+    
+            <div class="row-four">
+                <button id="decimal-btn" class="decimal" type="button" value=".">.</button>
+                <button class="std-btn" type="button" value="0">0</button>
+                <button id="equalBtn" class="equal-btn" type="button" value="=">=</button>
+            </div>
         </div>
-
-        <div class="row-one">
-            <button class="std-btn" type="button" value="7">7</button>
-            <button class="std-btn" type="button" value="8">8</button>
-            <button class="std-btn" type="button" value="9">9</button>
-            <button class="calc-btn" type="button" value="x">x</button>
-        </div>
-
-        <div class="row-two">
-            <button class="std-btn" type="button" value="4">4</button>
-            <button class="std-btn" type="button" value="5">5</button>
-            <button class="std-btn" type="button" value="6">6</button>
-            <button class="calc-btn" type="button" value="-">-</button>
-        </div>
-
-        <div class="row-three">
-            <button class="std-btn" type="button" value="1">1</button>
-            <button class="std-btn" type="button" value="2">2</button>
-            <button class="std-btn" type="button" value="3">3</button>
-            <button class="calc-btn" type="button" value="+">+</button>
-        </div>
-
-        <div class="row-four">
-            <button id="decimal-btn" class="std-btn" type="button" value=".">.</button>
-            <button class="std-btn" type="button" value="0">0</button>
-            <button id="equalBtn" class="equal-btn" type="button" value="=">=</button>
-        </div>
+        
     </div>
     <script src="script.js"></script>
 </body>

@@ -3,50 +3,65 @@ let numb2;
 let calcBtn;
 let total;
 let display = document.getElementById("output-display");
-let decimalButton = document.getElementById("decimal-btn");
-const getNumButtons = document.querySelectorAll(".std-btn");
-const setOperatorButtons = document.querySelectorAll(".calc-btn");
-const setNumbers = document.querySelectorAll(".std-btn");
-const clearButton = document.getElementById("clear-btn").addEventListener("click", clearEverything);
-const equalButton = document.getElementById("equalBtn").addEventListener("click", calculateTotal);
 
-getNumButtons.forEach(function (button) {
-    button.addEventListener("click", function(e) {
-        if(display.value === "" || display.value === calcBtn) {
-            display.value = e.target.value;   
-        } else if(e.target.value === ".") {
-            display.value += e.target.value;
-            decimalButton.value = ""; 
-        }else {
-            display.value += e.target.value; 
-        }
-    })
+let keys = document.getElementById('all-keys');
+keys.addEventListener('click', (e) => {
+    const target = e.target;
+    if(!target.matches('button')) {
+        return;
+    } else if(target.classList.contains('calc-btn')) {
+        getOperator(target);
+        return;
+    } else if(target.classList.contains('decimal')) {
+        getDecimal(target.value);
+        return;
+    } else if(target.classList.contains('clear-btn')) {
+        clearEverything();
+        return;
+    } else if(target.classList.contains('equal-btn')) {
+        calculateTotal();
+        return;
+    } else if(target.classList.contains("std-btn")) {
+        getNumber(target.value);
+        setNumbers(display.value);
+        return;
+    }
+    
 });
 
-setOperatorButtons.forEach(function(opBtn) {
-    opBtn.addEventListener("click", function(e) {
-        if (e.target.className === "calc-btn") {
-            calcBtn = e.target.value;
-            display.value = calcBtn;
-            if(display.value === calcBtn) {
-                decimalButton.value = ".";
-            }
-        } else if(numb1 !== null && numb2 !== undefined && calcBtn !== undefined) {
-            calculateTotal(numb1, numb2, calcBtn);
-        }
-    })
-});
+function getNumber(target) {
+    if(display.value === "" || display.value === calcBtn) {
+        display.value = target;   
+    } else {
+        display.value += target; 
+    }
+ };
 
-setNumbers.forEach(function (e) {
-    e.addEventListener("click", function() {
-        let userValue = display.value;
-        if(calcBtn === undefined) {
-            numb1 = parseFloat(userValue);
-        } else if (numb1 !== null && calcBtn !== undefined) {
-            numb2 = parseFloat(userValue);
-        }
-    })
-}); 
+function getDecimal(decimal) {
+    if(decimal === ".") {
+        display.value += decimal;
+    }
+}
+
+function getOperator(target) {
+    if(numb1 !== null && numb2 !== null && calcBtn !== undefined) {
+        calculateTotal();
+    } else if (target.className === "calc-btn") {
+        calcBtn = target.value;
+        display.value = calcBtn;
+    }
+}
+
+function setNumbers(display) {
+    let userValue = display;
+    if(calcBtn === undefined) {
+        numb1 = parseFloat(userValue);
+        console.log(numb1);
+    } else if (numb1 !== null && calcBtn !== undefined) {
+        numb2 = parseFloat(userValue);
+        console.log(numb2);
+    }
+}
   
 function calculateTotal(e) {
     switch(calcBtn) {
@@ -80,6 +95,5 @@ function clearEverything() {
     display.value = "";
     numb1 = null;
     numb2 = null;
-    calcBtn = undefined;
-    decimalButton.value = ".";
+    calcBtn =undefined;
 }
