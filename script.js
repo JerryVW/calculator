@@ -10,6 +10,10 @@ keys.addEventListener('click', (e) => {
     const target = e.target;
     if(!target.matches('button')) {
         return;
+    } else if(target.classList.contains("std-btn")) {
+        getNumber(target.value);
+        setNumbers(display.value);
+        return;
     } else if(target.classList.contains('calc-btn')) {
         getOperator(target, result);
         return;
@@ -22,11 +26,7 @@ keys.addEventListener('click', (e) => {
     } else if(target.classList.contains('equal-btn')) {
         calculateTotal();
         return;
-    } else if(target.classList.contains("std-btn")) {
-        getNumber(target.value);
-        setNumbers(display.value);
-        return;
-    }
+    } 
     
 });
 

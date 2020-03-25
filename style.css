@@ -18,7 +18,7 @@ button:focus {
 
 .container {
     width: 600px;
-    height: 810px;
+    height: 940px;
     margin: auto;
     margin-top: 100px;
     border: 1px solid rgb(39, 1, 255);
@@ -55,6 +55,7 @@ button:hover {
 }
 
 input,
+.memory-btn,
 .clear-btn, 
 .equal-btn, 
 .std-btn,
@@ -86,6 +87,7 @@ input,
     margin: 10px 10px;
 }
 
+.memory-btn,
 .std-btn, 
 .calc-btn,
 .decimal {
@@ -98,6 +100,7 @@ input,
     margin: 10px 10px;
 }
 
+.memory-row,
 .clear,
 .row-one,
 .row-two,
