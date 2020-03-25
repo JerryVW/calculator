@@ -37,9 +37,8 @@ keys.addEventListener('click', (e) => {
 function getNumber(target) {
     if(display.value === "" || display.value === calcBtn) {
         display.value = target;   
-    } else if(result !== undefined) {
+    } else if(parseFloat(display.value) === result) {
         display.value = target;
-        result = undefined;
     } else {
         display.value += target; 
     }
