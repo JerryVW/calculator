@@ -11,10 +11,10 @@ keys.addEventListener('click', (e) => {
     if(!target.matches('button')) {
         return;
     } else if(target.classList.contains('calc-btn')) {
-        getOperator(target);
+        getOperator(target, result);
         return;
     } else if(target.classList.contains('decimal')) {
-        getDecimal(target.value);
+        getDecimal(target.value, calcBtn);
         return;
     } else if(target.classList.contains('clear-btn')) {
         clearEverything();
@@ -38,11 +38,11 @@ function getNumber(target) {
     }
  };
 
-function getDecimal(decimal) {
-    if(decimal === ".") {
-        display.value += decimal;
-    } else if(display.value = calcBtn) {
-        display.value = decimal;
+ function getDecimal(dmal, cBtn) {
+    if(display.value === cBtn) {
+        display.value = dmal;
+    } else if(dmal === ".") {
+        display.value += dmal;
     }
 }
 
