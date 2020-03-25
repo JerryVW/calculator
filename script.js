@@ -3,6 +3,8 @@ let numb2;
 let result;
 let calcBtn;
 let total;
+let memoryBtn;
+let memoryArray = [];
 let display = document.getElementById("output-display");
 
 let keys = document.getElementById('all-keys');
@@ -26,13 +28,18 @@ keys.addEventListener('click', (e) => {
     } else if(target.classList.contains('equal-btn')) {
         calculateTotal();
         return;
-    } 
+    } else if(target.classList.contains("memory-btn")) {
+        allMemoryButtonFunctionality(target);
+    }
     
 });
 
 function getNumber(target) {
     if(display.value === "" || display.value === calcBtn) {
         display.value = target;   
+    } else if(result !== undefined) {
+        display.value = target;
+        result = undefined;
     } else {
         display.value += target; 
     }
@@ -50,7 +57,6 @@ function getOperator(target) {
     if(numb1 !== null && numb2 !== null && calcBtn !== undefined) {
         calculateTotal();
         calcBtn = target.value;
-        display.value = calcBtn;
     } else if (target.className === "calc-btn") {
         calcBtn = target.value;
         display.value = calcBtn;
@@ -94,6 +100,25 @@ function calculateTotal() {
             display.value = +total.toFixed(3);
             result = total;
             break;
+    }
+}
+
+function allMemoryButtonFunctionality(mBtn) {
+    memoryBtn = mBtn.value;
+    switch(memoryBtn) {
+        case "M+":
+            memoryArray.push(parseFloat(display.value));
+            console.log(memoryArray);  
+            break;
+
+        case "M-":
+            memoryArray.pop(display.value);
+            console.log(memoryArray);  
+            break;
+
+        case "MR":
+
+        case "MC":
     }
 }
 
