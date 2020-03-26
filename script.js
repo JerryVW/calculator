@@ -45,11 +45,13 @@ function getNumber(target) {
  };
 
  function getDecimal(dmal, cBtn) {
-    if(display.value === cBtn) {
+    if(display.value === dmal) {
+        dmal.value = "";
+    } else if(display.value === cBtn) {
         display.value = dmal;
     } else if(dmal === ".") {
         display.value += dmal;
-    }
+    } 
 }
 
 function getOperator(target) {
@@ -104,15 +106,19 @@ function calculateTotal() {
 
 function allMemoryButtonFunctionality(mBtn) {
     memoryBtn = mBtn.value;
+    const memoryDisplay = document.getElementById("memory-placement");
     switch(memoryBtn) {
         case "M+":
             memoryArray.push(parseFloat(display.value));
-            console.log(memoryArray);  
+            console.log(memoryArray);
+            memoryDisplay.textContent = "M";
+             
             break;
 
         case "M-":
             memoryArray.pop(display.value);
-            console.log(memoryArray);  
+            console.log(memoryArray);
+            memoryDisplay.textContent = "";  
             break;
 
         case "MR":
