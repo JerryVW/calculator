@@ -14,4 +14,4 @@ You can check it out [here](https://jerryvw.github.io/calculator/)
 
 <h2>Author</h2>
 
-<p>JerryVander Weide - Full-Stack Developer [My Website](https://jerryvw.github.io/jerryvanderweide-site/) & [LinkedIn](https://www.linkedin.com/in/jerry-vander-weide-ba0586101/)</p>
+**JerryVander Weide** - Full-Stack Developer [My Website](https://jerryvw.github.io/jerryvanderweide-site/) & [LinkedIn](https://www.linkedin.com/in/jerry-vander-weide-ba0586101/)
