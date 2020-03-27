@@ -5,14 +5,15 @@ let calcBtn;
 let total;
 let memoryBtn;
 let memoryArray = [];
+let maxLength = 10;
 let display = document.getElementById("output-display");
 
 let keys = document.getElementById('all-keys');
 keys.addEventListener('click', (e) => {
     const target = e.target;
     if(!target.matches('button')) {
-        return;
-    } else if(target.classList.contains("std-btn")) {
+        return;   
+    }  else if(target.classList.contains("std-btn")) {
         getNumber(target.value);
         setNumbers(display.value);
     } else if(target.classList.contains('calc-btn')) {
@@ -39,13 +40,11 @@ function getNumber(target) {
  };
 
  function getDecimal(dmal, cBtn) {
-    if(display.value === dmal) {
-        dmal.value = "";
+    if(!display.value.includes('.')) {
+        display.value += dmal;
     } else if(display.value === cBtn) {
         display.value = dmal;
-    } else if(dmal === ".") {
-        display.value += dmal;
-    } 
+    }  
 }
 
 function getOperator(target) {
