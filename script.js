@@ -15,23 +15,17 @@ keys.addEventListener('click', (e) => {
     } else if(target.classList.contains("std-btn")) {
         getNumber(target.value);
         setNumbers(display.value);
-        return;
     } else if(target.classList.contains('calc-btn')) {
         getOperator(target, result);
-        return;
     } else if(target.classList.contains('decimal')) {
         getDecimal(target.value, calcBtn);
-        return;
     } else if(target.classList.contains('clear-btn')) {
         clearEverything();
-        return;
     } else if(target.classList.contains('equal-btn')) {
         calculateTotal();
-        return;
     } else if(target.classList.contains("memory-btn")) {
         allMemoryButtonFunctionality(target);
     }
-    
 });
 
 function getNumber(target) {
@@ -108,22 +102,33 @@ function allMemoryButtonFunctionality(mBtn) {
     memoryBtn = mBtn.value;
     const memoryDisplay = document.getElementById("memory-placement");
     switch(memoryBtn) {
-        case "M+":
-            memoryArray.push(parseFloat(display.value));
-            console.log(memoryArray);
-            memoryDisplay.textContent = "M";
-             
+        case "MS":
+            if(memoryDisplay.textContent === "") {
+                memoryArray.push(result);
+                memoryDisplay.textContent = "M = " + memoryArray[0];
+                clearEverything();
+            }
             break;
 
-        case "M-":
-            memoryArray.pop(display.value);
-            console.log(memoryArray);
-            memoryDisplay.textContent = "";  
+        case "M+":
+            memoryArray[0] = parseFloat(display.value) + memoryArray[0];
+            memoryDisplay.textContent = "M = " + memoryArray[0];
+            display.value = "";
+            result = undefined;
+            numb1 = memoryArray[0];
+            numb2 = null;
+            calcBtn = undefined;
             break;
 
         case "MR":
+            display.value = memoryArray[0];
+            result = display.value;
+            break;
 
         case "MC":
+            memoryArray.pop(result);
+            memoryDisplay.textContent = "";
+            break;
     }
 }
 

@@ -112,11 +112,10 @@ input,
 }
 
 .m-place {
-    width: 110px;
+    width: 560px;
     height: 25px;
     margin: 5px 0 10px 20px;
     color: red;
     font-family: 'Times New Roman', Times, serif;
     font-size: 36px;
-    text-align: center;
 }
