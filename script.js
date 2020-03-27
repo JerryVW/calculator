@@ -114,13 +114,19 @@ function allMemoryButtonFunctionality(mBtn) {
             break;
 
         case "M+":
-            memoryArray[0] = parseFloat(display.value) + memoryArray[0];
-            memoryDisplay.textContent = "M = " + memoryArray[0];
-            display.value = "";
-            result = undefined;
-            numb1 = memoryArray[0];
-            numb2 = null;
-            calcBtn = undefined;
+            if(memoryDisplay.textContent === "") {
+                memoryArray.push(result);
+                memoryDisplay.textContent = "M = " + memoryArray[0];
+                clearEverything();
+            } else {
+                memoryArray[0] = parseFloat(display.value) + memoryArray[0];
+                memoryDisplay.textContent = "M = " + memoryArray[0];
+                display.value = "";
+                result = undefined;
+                numb1 = memoryArray[0];
+                numb2 = null;
+                calcBtn = undefined;
+            }
             break;
 
         case "MR":
