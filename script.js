@@ -75,24 +75,28 @@ function calculateTotal() {
             total = numb1 + numb2;
             display.value = +total.toFixed(3);
             result = total;
+            calcBtn = undefined;
             break;
 
         case "-":
             total = numb1 - numb2;
             display.value = +total.toFixed(3);
             result = total;
+            calcBtn = undefined;
             break;
 
         case "x":
             total = numb1 * numb2;
             display.value = +total.toFixed(3);
             result = total;
+            calcBtn = undefined;
             break;
 
         case "/":
             total = numb1 / numb2;
             display.value = +total.toFixed(3);
             result = total;
+            calcBtn = undefined;
             break;
     }
 }
@@ -121,7 +125,10 @@ function allMemoryButtonFunctionality(mBtn) {
 
         case "MR":
             display.value = memoryArray[0];
-            result = display.value;
+            result = undefined;
+            numb1 = parseFloat(display.value);
+            numb2 = null;
+            calcBtn = undefined;
             break;
 
         case "MC":
